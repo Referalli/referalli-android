@@ -20,7 +20,7 @@ class OkHttpTrackerTransport(private val client: OkHttpClient) : TrackerTranspor
     override fun send(request: TrackerRequest): TrackerResponse {
         val body = request.body?.toRequestBody(JSON)
         val builder = Request.Builder().url(request.url).method(request.method, body)
-        request.headers.forEach { (k, v) -> builder.header(k, v) }
+        for ((k, v) in request.headers) builder.header(k, v)
         client.newCall(builder.build()).execute().use { response ->
             return TrackerResponse(response.code, response.body?.string() ?: "")
         }
