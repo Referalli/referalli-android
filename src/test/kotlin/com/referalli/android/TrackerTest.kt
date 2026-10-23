@@ -117,7 +117,7 @@ class TrackerTest {
         val t = tracker(stub)
         val captured = t.handleDeepLink("https://referalli.com/go/tk_test/dana")!!
         t.reportVisit(captured)
-        assertEquals("clk_new", t.referral!!.clickId)
+        assertEquals("clk_new", t.storedReferral!!.clickId)
         assertTrue(stub.body("/visit").contains("\"code\":\"dana\""))
     }
 
@@ -160,7 +160,7 @@ class TrackerTest {
         assertEquals(id, ReferalliTracker("tk", storage = storage, transport = stub).anonId)
         a.handleDeepLink("https://x.example/?via=dana")
         a.reset()
-        assertNull(a.referral)
+        assertNull(a.storedReferral)
         assertTrue(a.anonId != id)
     }
 }
