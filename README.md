@@ -5,11 +5,22 @@ signup tracking for [Referalli](https://referalli.com). minSdk 21. No advertisin
 `java.net.http`, no clipboard access.
 
 ```kotlin
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io") // until the SDK is on Maven Central
+    }
+}
+
 // build.gradle.kts
 dependencies {
-    implementation("com.referalli:referalli-android:0.1.0")
+    implementation("com.github.Referalli:referalli-android:0.2.0")
 }
 ```
+
+Built by [JitPack](https://jitpack.io/#Referalli/referalli-android) from the `0.2.0` tag; it brings `referalli-kotlin` 0.2.0 with it. Once both are on Maven Central the coordinates become `com.referalli:referalli-android` and `com.referalli:referalli-kotlin`.
 
 ## Set up
 

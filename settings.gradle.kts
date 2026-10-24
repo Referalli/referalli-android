@@ -10,6 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // On JitPack the Kotlin SDK comes from JitPack's own build of referalli-kotlin.
+        if (System.getenv("JITPACK") == "true") maven("https://jitpack.io")
     }
 }
 

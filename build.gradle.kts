@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.referalli"
-version = "0.1.0"
+version = "0.2.0"
 
 android {
     namespace = "com.referalli.android"
@@ -37,7 +37,9 @@ kotlin {
 
 dependencies {
     // The tracker core (HttpURLConnection, no java.net.http).
-    api("com.referalli:referalli-kotlin:0.1.0")
+    // JitPack (JITPACK=true) builds from the GitHub tag: depend on its build of the Kotlin SDK at the
+    // same version. Everywhere else it is the Maven Central artifact (or the included build).
+    api(if (System.getenv("JITPACK") == "true") "com.github.Referalli:referalli-kotlin:${project.version}" else "com.referalli:referalli-kotlin:${project.version}")
     implementation("com.android.installreferrer:installreferrer:2.2")
     // Optional: OkHttpTrackerTransport is usable only when the app already depends on OkHttp.
     compileOnly("com.squareup.okhttp3:okhttp:4.12.0")
