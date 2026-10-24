@@ -53,6 +53,6 @@ jobs:
         with:
           subject-path: 'dist/*'
       - name: GitHub Release with the attested artifacts
-        run: gh release create "$GITHUB_REF_NAME" dist/* --verify-tag --generate-notes --title "referalli-android $GITHUB_REF_NAME"
+        run: gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes --title "referalli-android $GITHUB_REF_NAME"
         env:
           GH_TOKEN: ${{ github.token }}
